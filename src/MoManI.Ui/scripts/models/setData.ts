@@ -21,11 +21,11 @@ export class SetData {
         this.description = set.description;
         this.numeric = set.numeric;
         this.values = setData && setData.items ? _.map(setData.items, i => {
-             return {
-                 id: uuid.v4(),
-                 value: this.numeric ? +i.value : i.value,
-                 name: i.name,
-             }
+            return {
+                id: uuid.v4(),
+                value: this.numeric ? +i.value : i.value,
+                name: i.name,
+            }
         }) : [];
     }
 
@@ -34,12 +34,14 @@ export class SetData {
             setId: this.setId,
             modelId: this.modelId,
             //values: _.map(this.values, val => val.value.toString()),
-            items: _.map(this.values, val => {
-                return {
-                    name: val.name,
-                    value: val.value.toString(),
-                }
-            }), 
+            items: _.map(
+                this.values,
+                val => {
+                    return {
+                        name: val.name,
+                        value: val.value.toString(),
+                    }
+                }),
         };
     }
 

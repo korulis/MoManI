@@ -10,6 +10,7 @@ export interface ISetDataScope extends ng.IScope {
     data: setDataModel.SetData;
     save: () => void;
     invalidValuesNotUnique: boolean;
+    setValues: angular.IFormController;
 }
 
 export class SetDataController {
@@ -27,6 +28,9 @@ export class SetDataController {
         });
 
         $scope.save = () => {
+            if ($scope.setValues.$invalid) {
+                return;
+            }
             $scope.invalidValuesNotUnique = false;
             if (!$scope.data.valuesUnique()) {
                 $scope.invalidValuesNotUnique = true;

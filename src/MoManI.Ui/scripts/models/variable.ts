@@ -99,7 +99,7 @@ export class Variable implements IRenderable {
         var res = `var ${this.name}${internalSetDefinitionsString}`;
         if (this.constraint) {
             var operator = _.find(variableOperators, 'id', this.constraint.operator);
-            res += ` ${operator.name} ${this.constraint.value}`;
+            res += ` ${operator.name} ${this.constraint.value}`; //todo kb here!
         }
         if (this.integer) {
             res += `, integer`;
